@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
-	before_action :set_default_json
+	protect_from_forgery except: :index
+  before_action :set_default_json
 
 	attr_reader :current_user
 
