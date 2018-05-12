@@ -15,6 +15,15 @@ amir=User.create(
 )
 puts "Amir Created as a user"
 
+15.times do |user|
+	User.create(
+	name:"Amir Parkar#{user}",
+	email:"amirparkar#{user}@gmail.com",
+	password:"boomla1!",
+	password_confirmation:"boomla1!"
+)
+end
+
 3.times do|question|
 	Question.create!(
 		name:"Question number #{question+1}?",

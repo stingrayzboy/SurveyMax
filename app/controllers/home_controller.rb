@@ -4,6 +4,8 @@ before_action :set_question
 before_action :set_answer
   def index
   	if logged_in?(:admin)
+      @admin_users=User.where(roles:"admin")
+      @normal_users=User.where(roles:"user")
   		@question=Question.count
   		@answer=Answer.count
   		@user=User.count
@@ -32,7 +34,22 @@ before_action :set_answer
      
   	end
   end
+  def admin
 
+    @user=User.find(params[:id])
+    @user.roles="admin"
+    if @user.save
+    end
+    redirect_to action:"index"
+  end
+
+  def user
+    @user=User.find(params[:id])
+    @user.roles="user"
+    if @user.save
+    end
+    redirect_to action:"index"
+  end
   private
 
   def set_question
