@@ -26,9 +26,9 @@ before_action :set_answer
   	@new_question=Question.new
     @myquestions=Question.where(user:current_user)
   	if logged_in?(:admin)
-      @questions=Question.page(params[:page]).per(4)
+      @questions=Question.page(params[:page]).per(6)
   	else
-      @questions=Question.where(status:1).page(params[:page]).per(4)
+      @questions=Question.where(status:1).page(params[:page]).per(6)
      
   	end
   end

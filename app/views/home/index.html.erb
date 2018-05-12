@@ -1,6 +1,8 @@
-<h1>Welcome <%=link_to current_user.name,edit_user_registration_path%> you are <%=current_user.roles.first.capitalize%></h1>
-<% if logged_in?(:admin)%>
-	<%= render "dashboard/admin"%>
-<%else%>
-	<%= render "dashboard/user"%>
-<%end%>
+<div class="container text-center">
+	<h1>Welcome <%=link_to current_user.name,edit_user_registration_path%> you are <%=current_user.roles.first.capitalize%></h1>
+	<% if logged_in?(:admin)%>
+		<%= render "dashboard/admin"%>
+	<%else%>
+		<%= render "dashboard/user"%>
+	<%end%>
+</div>
