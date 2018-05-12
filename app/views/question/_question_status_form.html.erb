@@ -2,6 +2,7 @@
 	<div class="form-group">
 		<%=f.select :status,[["Private",0],["Active",1],["Expired",2]],class:"form-control"%>
 		<%=f.submit "Update",class:"btn btn-primary"%>
-		<%=link_to "View Answers",question_path(quest),class:"btn btn-success"%>
+		
 	</div>
 <%end%>
+

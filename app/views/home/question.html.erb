@@ -20,11 +20,11 @@
 					<div class="card text-center" style="width: 100%">
 					  	<div class="card-body">
 						    <h5 class="card-title"><%=question.name.html_safe%></h5>
-						    <%if logged_in?(:admin)%>
+						    <%if logged_in?(:admin) || question.user==current_user%>
+					
 						    	<%=render "/question/question_status_form",quest:question%>
-						    <%elsif question.user==current_user%>
-						    	<%=render "/question/question_status_form",quest:question%>
-						    <%end%>   
+						    <%end%>
+						    <%=link_to "View Answers",question_path(question),class:"btn btn-success"%>   
 					  	</div>
 						<div class="card-footer text-muted">
 					   		Posted by <%=question.user.name%>&nbsp;<%= time_ago_in_words(question.created_at)+" ago"%>
@@ -58,6 +58,7 @@
 				    <%elsif question.user==current_user%>
 				    	<%=render "/question/question_status_form",quest:question%>
 				    <%end%>
+				    <%=link_to "View Answers",question_path(question),class:"btn btn-success"%>
 				  </div>
 				</div>
 			    <%end%>
