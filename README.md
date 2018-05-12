@@ -51,17 +51,17 @@ Things you may want to cover:
 	header{Bearer (Token From above)}<br>
 
 * This Application uses multiple Gems
-	Bootstrap4<br>
+	Bootstrap4: 
 		For overall Styling<br>
-	Kaminari<br>
+	Kaminari: 
 		For Pagination<br>
-	Devise
+	Devise: 
 		For Session Management<br>
-	Jwt<br>
+	Jwt: 
 		For API Tokens<br>
-	Platipus<br>
+	Platipus: 
 		For Footer<br>
-	Chartkick<br>
+	Chartkick: 
 		To Create JS Charts<br>
-	Groupdate<br>
+	Groupdate: 
 		To Use Grouping queries<br>
