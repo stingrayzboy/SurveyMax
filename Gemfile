@@ -21,9 +21,17 @@ gem 'petergate', '~> 1.8', '>= 1.8.1'
 
 gem 'bootstrap', '~> 4.0'
 
+gem 'jquery-rails'
+
 gem 'devise', '~> 4.2'
 
 gem 'jwt'
+
+gem 'chartkick', '~> 2.3', '>= 2.3.4'
+
+gem 'groupdate', '~> 4.0', '>= 4.0.1'
+
+gem 'platipus', '~> 0.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

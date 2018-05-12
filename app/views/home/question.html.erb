@@ -1,2 +1,11 @@
 <h1>Home#question</h1>
 <p>Find me in app/views/home/question.html.erb</p>
+<% if logged_in?(:admin)%>
+	<%= render "question/admin"%>
+<%else%>
+	<%= render "question/user"%>
+<%end%>
+
+<%@questions.each do |question|%>
+	<%=question.name%>
+<%end%>

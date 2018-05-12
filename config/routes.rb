@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get 'home/index'
-
   get 'home/question'
+  resources :questions
+  
 
   post 'api/v1/auth_user' => 'authentication#authenticate_user'
   namespace :api do

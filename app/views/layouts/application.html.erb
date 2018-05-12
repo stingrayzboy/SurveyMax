@@ -3,12 +3,31 @@
   <head>
     <title>Surveymax</title>
     <%= csrf_meta_tags %>
-
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  	<header>
+      <!-- Fixed navbar -->
+      <%= render "shared/navbar"%>
+      
+    </header>
+
+    <main role="main" class="container">
+      <!-- <h1 class="mt-5">Sticky footer with fixed navbar</h1>
+      <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>
+      <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p> -->
     <%= yield %>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <%=Platipus::Renderer.copyright 'Faraz Noor', 'All rights reserved'%>
+      </div>
+    </footer>
+    
+
+
   </body>
 </html>
