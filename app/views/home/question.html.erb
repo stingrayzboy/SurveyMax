@@ -13,6 +13,13 @@
 	  <div class="card-body">
 	    <h5 class="card-title">Posted by <%=question.user.name%></h5>
 	    
+	    <%if logged_in?(:admin)%>
+	    	<%=render "/question/question_status_form",quest:question%>
+	    <%elsif question.user==current_user%>
+	    	<%=render "/question/question_status_form",quest:question%>
+	    <%end%>
+	    
+
 	    <a href="#" class="btn btn-primary">Go somewhere</a>
 	  </div>
 	

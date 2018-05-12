@@ -1,4 +1,4 @@
-<h1>Welcome <%=current_user.name%></h1>
+<h1>Welcome <%=link_to current_user.name,edit_user_registration_path%></h1>
 <% if logged_in?(:admin)%>
 	<%= render "dashboard/admin"%>
 <%else%>
