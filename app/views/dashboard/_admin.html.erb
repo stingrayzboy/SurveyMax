@@ -1,11 +1,24 @@
-<%= pie_chart @pie_chart %>
-<hr>
-<p>User Creation by Date</p>
 
-<%= line_chart @line_user %>
-<hr>
-<p>Questions Created This week</p>
-<%= column_chart @column_question %>
-<hr>
-<p>Answers this week</p>
-<%= column_chart @column_answer %>
+	<div class="row">
+		<div class="col-md-6">
+			<%= pie_chart @pie_chart ,height:'100%'%>
+				
+			</div>
+		<div class="col-md-6 text-center">
+			<p>User Creation by Date</p>
+			<%= line_chart @line_user ,height:'80%'%>
+		</div>	
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-6 text-center">
+			
+			<%= column_chart @column_question %>
+			<p>Questions Created This week</p>
+		</div>
+		<div class="col-md-6 text-center">
+			
+			<%= column_chart @column_answer %>
+			<p>Answers this week</p>
+		</div>
+	</div>

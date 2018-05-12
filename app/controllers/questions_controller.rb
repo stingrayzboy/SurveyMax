@@ -9,6 +9,9 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   def show
+    @question=Question.find(params[:id])
+    @answers=Answer.where(question:@question)
+    @my_answer=Answer.new
   end
 
   # GET /questions/new
@@ -25,16 +28,28 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @question.save
-      redirect_to controller:"home",action:"question", notice: 'Question was successfully created.'
+      redirect_to controller:"home",action:"question"
     else
       render :new
     end
   end
 
+  # POST /questions/answer/1
+
+    def answer
+      @answer = Answer.new(answer_params)
+      @answer.user=current_user
+      if @answer.save
+        redirect_to question_path
+      else
+        render :new
+      end
+    end
+
   # PATCH/PUT /questions/1
   def update
     if @question.update(question_params)
-      redirect_to controller:"home",action:"question", notice: 'Question was successfully updated.'
+      redirect_to controller:"home",action:"question"
     else
       render controller:"home",action:"question"
     end
@@ -55,5 +70,9 @@ class QuestionsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def question_params
       params.require(:question).permit(:name,:user_id,:status)
+    end
+
+    def answer_params
+      params.require(:answer).permit(:name,:question_id)
     end
 end

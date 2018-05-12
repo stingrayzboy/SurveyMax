@@ -32,6 +32,10 @@ gem 'chartkick', '~> 2.3', '>= 2.3.4'
 gem 'groupdate', '~> 4.0', '>= 4.0.1'
 
 gem 'platipus', '~> 0.1.0'
+
+gem 'ckeditor', '~> 4.1', '>= 4.1.6'
+
+gem 'kaminari', '~> 0.16.3'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

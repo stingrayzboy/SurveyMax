@@ -4,32 +4,78 @@
 <%else%>
 	<%= render "question/user"%>
 <%end%>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Ask A New Question
+  </button>
+<!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myQuestions">
+    My Questions
+  </button>
 
-  <%@questions.each do |question|%>
-	<div class="card text-center">
-	  <div class="card-header">
-	    <%=question.name%>
-	  </div>
-	  <div class="card-body">
-	    <h5 class="card-title">Posted by <%=question.user.name%></h5>
-	    
-	    <%if logged_in?(:admin)%>
-	    	<%=render "/question/question_status_form",quest:question%>
-	    <%elsif question.user==current_user%>
-	    	<%=render "/question/question_status_form",quest:question%>
-	    <%end%>
-	    
-
-	    <a href="#" class="btn btn-primary">Go somewhere</a>
-	  </div>
-	
-	<div class="card-footer text-muted">
-   	<%= time_ago_in_words(question.created_at)+" ago"%>
+<%= paginate @questions %>
+<div class="row">
+		<%@questions.each do |question|%>
+			<div class="col-md-6">
+			<div class="card text-center" style="width: 100%">
+			  	<div class="card-body">
+				    <h5 class="card-title"><%=question.name.html_safe%></h5>
+				    <small></small>
+				    <%if logged_in?(:admin)%>
+				    	<%=render "/question/question_status_form",quest:question%>
+				    <%elsif question.user==current_user%>
+				    	<%=render "/question/question_status_form",quest:question%>
+				    <%end%>
+				    
+				    <%=link_to "View Answers",question_path(question),class:"btn btn-success"%>   
+			  	</div>
+				<div class="card-footer text-muted">
+			   		Posted by <%=question.user.name%>&nbsp;<%= time_ago_in_words(question.created_at)+" ago"%>
+			  	</div>
+		 		</div>
+		 	</div>
+		<%end%>
+</div> 
+<%= paginate @questions %>
+<!-- The Modal -->
+<div class="modal fade" id="myQuestions">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">My Questions</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <%@myquestions.each do |question|%>
+          	<div class="card text-center">
+	  
+			  <div class="card-body">
+			    <h5 class="card-title"><%=question.name.html_safe%></h5>
+			    
+			    <%if logged_in?(:admin)%>
+			    	<%=render "/question/question_status_form",quest:question%>
+			    <%elsif question.user==current_user%>
+			    	<%=render "/question/question_status_form",quest:question%>
+			    <%end%>
+			    
+			    <%=link_to "View Answers",question_path(question),class:"btn btn-success"%>
+			    
+			  </div>
+			</div>
+		    <%end%>
+        	</div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
   </div>
- 	
- 	</div>
-<%end%>
-  
-  
+</div>
 
 

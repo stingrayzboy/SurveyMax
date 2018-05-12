@@ -16,6 +16,6 @@
 //= require bootstrap
 //= require Chart.bundle
 //= require chartkick
-
+//= require ckeditor/init
 //= require turbolinks
 //= require_tree .

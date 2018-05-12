@@ -1,6 +1,6 @@
 <%=form_for quest,url:question_path(quest),method: :patch do |f|%>
 	<div class="form-group">
 		<%=f.select :status,[["Draft",0],["Published",1],["Expired",2]],class:"form-control"%>
-		<%=f.submit "Post Comment",class:"btn btn-primary"%>
+		<%=f.submit "Update",class:"btn btn-primary"%>
 	</div>
 <%end%>
