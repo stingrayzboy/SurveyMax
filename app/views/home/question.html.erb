@@ -1,11 +1,28 @@
-<h1>Home#question</h1>
-<p>Find me in app/views/home/question.html.erb</p>
+
 <% if logged_in?(:admin)%>
 	<%= render "question/admin"%>
 <%else%>
 	<%= render "question/user"%>
 <%end%>
 
-<%@questions.each do |question|%>
-	<%=question.name%>
+  <%@questions.each do |question|%>
+	<div class="card text-center">
+	  <div class="card-header">
+	    <%=question.name%>
+	  </div>
+	  <div class="card-body">
+	    <h5 class="card-title">Posted by <%=question.user.name%></h5>
+	    
+	    <a href="#" class="btn btn-primary">Go somewhere</a>
+	  </div>
+	
+	<div class="card-footer text-muted">
+   	<%= time_ago_in_words(question.created_at)+" ago"%>
+  </div>
+ 	
+ 	</div>
 <%end%>
+  
+  
+
+
