@@ -5,9 +5,9 @@ class Answer < ApplicationRecord
   	
   	def answer_id
   		begin
-  			self.alphaid="#{Date.today.strftime('%B')}_#{self.user.name.split(' ').first}_#{Answer.last.id+1}"
+  			self.alphaid="A_#{self.user.name.split(' ').first.upcase}_#{Answer.last.id+1}"
   		rescue
-  			self.alphaid="#{Date.today.strftime('%B')}_#{self.user.name.split(' ').first}_0"
+  			self.alphaid="A_#{self.user.name.split(' ').first.upcase}_0"
   		end
   	end
 end
