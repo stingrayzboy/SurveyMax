@@ -77,23 +77,11 @@ test:
 # You can use this database configuration with:
 #
 #   production:
-# Host
-# ec2-54-225-200-15.compute-1.amazonaws.com
-# Database
-# d26es1av3d9o1h
-# User
-# cudtrdwtrkuytf
-# Port
-# 5432
-# Password
-# 77d675392559e3c5cfa9e82dd11719d0cecf95b9405393a06121ba2972ba4274
 
-# #     url: <%= ENV['DATABASE_URL'] %>
+#     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
   <<: *default
-  host: ec2-54-225-200-15.compute-1.amazonaws.com
-  database: d26es1av3d9o1h
-  username: cudtrdwtrkuytf
-  port: 5432
-  password: 77d675392559e3c5cfa9e82dd11719d0cecf95b9405393a06121ba2972ba4274
+  database: surveymax_production
+  username: surveymax
+  password: <%= ENV['SURVEYMAX_DATABASE_PASSWORD'] %>
