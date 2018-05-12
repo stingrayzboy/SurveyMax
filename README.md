@@ -28,40 +28,40 @@ Things you may want to cover:
 	Problem Description: Create an application that helps users to ask questions and gather answers
 
 	Models: 
-		Question 
-			belongs to User 
-			has many Answers
-		Answer
-			belongs to User
-			belongs to Question
-		User
-			has many Question
-			has many Answers
+		Question <br>
+			belongs to User <br>
+			has many Answers<br>
+		Answer<br>
+			belongs to User<br>
+			belongs to Question<br>
+		User<br>
+			has many Question<br>
+			has many Answers<br>
 
-	The Seeds file has the necessary models initialized with objects for demo perpose
+	The Seeds file has the necessary models initialized with objects for demo perpose<br>
 
 
 
 
 * This Application supports APIs
-	to generate token visit http://localhost:3000/api/v1/auth_user
-	params{email:faraznoor75@gmail.com,password:boomla1!}
+	to generate token visit http://localhost:3000/api/v1/auth_user<br>
+	params{email:faraznoor75@gmail.com,password:boomla1!}<br>
 
-	to call the API visit http://localhost:3000/api/v1/service
-	header{Bearer (Token From above)}
+	to call the API visit http://localhost:3000/api/v1/service<br>
+	header{Bearer (Token From above)}<br>
 
 * This Application uses multiple Gems
-	Bootstrap4
-		For overall Styling
-	Kaminari
-		For Pagination
+	Bootstrap4<br>
+		For overall Styling<br>
+	Kaminari<br>
+		For Pagination<br>
 	Devise
-		For Session Management
-	Jwt
-		For API Tokens
-	Platipus
-		For Footer
-	Chartkick
-		To Create JS Charts
-	Groupdate
-		To Use Grouping queries
+		For Session Management<br>
+	Jwt<br>
+		For API Tokens<br>
+	Platipus<br>
+		For Footer<br>
+	Chartkick<br>
+		To Create JS Charts<br>
+	Groupdate<br>
+		To Use Grouping queries<br>
