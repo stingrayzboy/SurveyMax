@@ -14,4 +14,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :questions, dependent: :destroy
   has_many :answers,dependent: :destroy
+  def profile_pic
+    "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email)}"  
+  end
 end

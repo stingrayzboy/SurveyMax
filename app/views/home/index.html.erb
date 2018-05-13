@@ -12,7 +12,7 @@
   </button>
 
   <!-- The Modal -->
-  <div class="modal fade" id="myModal">
+  <div class="modal fade" id="myModal" >
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
       
@@ -27,18 +27,23 @@
 	        <div class="row">
 	        	<div class="col-md-6">	
 	        		<h3>Users</h3>
+	        		<div style="overflow:scroll; height:400px;">
 					<%@normal_users.each do |user|%>
+						<%=image_tag user.profile_pic,width:60,class:"image-comment" %>
 						<%=link_to user.name ,user_admin_path(user.id),method: :post%>
 						<hr>
 					<%end%>
+					</div>
 		        </div>
 	          <div class="col-md-6">
 	          		<h3>Admins</h3>
+	          		<div style="overflow:scroll; height:400px;">
 	          		<%@admin_users.each do |user|%>
-
+	          			<%=image_tag user.profile_pic,width:60,class:"image-comment" %>
 		          		<%=link_to user.name ,admin_user_path(user.id),method: :post%>
 		          		<hr>
 		          	<%end%>
+		          </div>
 	          </div>
 	        </div>
         </div>

@@ -36,14 +36,17 @@
   <%end%>
   <hr>
   Answers
+  <div style="overflow:scroll; height:500px;">
   <%@answers.each do |answer|%>
   	<div class="card">
     		<div class="card-body">
       		<%=answer.name.html_safe%>
     		</div>
     		<div class="card-footer">
-    			<small>Answered by&nbsp;<%=answer.user.name%>&nbsp;<%= time_ago_in_words(answer.created_at)+" ago"%></small>
+    			<%=image_tag answer.user.profile_pic,width:60,class:"image-comment" %>
+          <small>Answered by&nbsp;<%=answer.user.name%>&nbsp;<%= time_ago_in_words(answer.created_at)+" ago"%></small>
     		</div>
   	</div>	
   <%end%>
+</div>
 </div>

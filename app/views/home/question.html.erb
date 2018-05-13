@@ -27,6 +27,7 @@
 						    <%=link_to "View Answers",question_path(question),class:"btn btn-success"%>   
 					  	</div>
 						<div class="card-footer text-muted">
+					   		<%=image_tag question.user.profile_pic,width:60,class:"image-comment" %>
 					   		Posted by <%=question.user.name%>&nbsp;<%= time_ago_in_words(question.created_at)+" ago"%>
 					  	</div>
 			 		</div>
