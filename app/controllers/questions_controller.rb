@@ -39,7 +39,7 @@ class QuestionsController < ApplicationController
     def answer
       @answer = Answer.new(answer_params)
       @answer.user=current_user
-      @answer.votes=0
+      @answer.vote_count=0
       if @answer.save
         redirect_to question_path
       else
