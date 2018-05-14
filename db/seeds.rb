@@ -44,7 +44,8 @@ puts "Amir Created 3 questions"
 	Answer.create!(
 		name:"Answer number #{answer+1}!!!",
 		user:amir,
-		question:faraz.questions.last)
+		question:faraz.questions.last,
+		vote_count:0)
 end
 puts "Amir answered last question 3 times"
 
@@ -52,7 +53,8 @@ puts "Amir answered last question 3 times"
 	Answer.create!(
 		name:"Answer number #{answer+1}!!!",
 		user:amir,
-		question:faraz.questions.first)
+		question:faraz.questions.first,
+		vote_count:0)
 end
 puts "Amir answered first question 3 times"
 
@@ -61,7 +63,8 @@ puts "Amir answered first question 3 times"
 	Answer.create!(
 		name:"Answer number #{answer+1}!!!",
 		user:faraz,
-		question:amir.questions.first)
+		question:amir.questions.first,
+		vote_count:0)
 end
 puts "Amir answered last question 3 times"
 
@@ -69,6 +72,7 @@ puts "Amir answered last question 3 times"
 	Answer.create!(
 		name:"Answer number #{answer+1}!!!",
 		user:faraz,
-		question:amir.questions.last)
+		question:amir.questions.last,
+		vote_count:0)
 end
 puts "Amir answered first question 3 times"

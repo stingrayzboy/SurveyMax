@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514171446) do
+ActiveRecord::Schema.define(version: 20180514180003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,9 @@ ActiveRecord::Schema.define(version: 20180514171446) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "vote_type"
+    t.text "bazuka"
     t.index ["answer_id"], name: "index_votes_on_answer_id"
+    t.index ["bazuka"], name: "index_votes_on_bazuka", unique: true
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
