@@ -1,6 +1,7 @@
 class Answer < ApplicationRecord
-	belongs_to :user
+    belongs_to :user
   	belongs_to :question
+    has_many :votes,dependent: :destroy
   	before_create :answer_id
   	
   	def answer_id

@@ -39,6 +39,7 @@ class QuestionsController < ApplicationController
     def answer
       @answer = Answer.new(answer_params)
       @answer.user=current_user
+      @answer.votes=0
       if @answer.save
         redirect_to question_path
       else
@@ -66,13 +67,16 @@ class QuestionsController < ApplicationController
     def set_question
       @question = Question.find(params[:id])
     end
-
+    
+    def set_vote_answer
+      @answer_vote = Answer.find(params[:answer_id])
+    end
     # Only allow a trusted parameter "white list" through.
     def question_params
       params.require(:question).permit(:name,:user_id,:status)
     end
 
     def answer_params
-      params.require(:answer).permit(:name,:question_id)
+      params.require(:answer).permit(:name,:question_id,:votes)
     end
 end
