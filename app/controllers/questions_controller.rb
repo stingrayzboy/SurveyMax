@@ -10,8 +10,9 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   def show
     @question=Question.find(params[:id])
-    @answers=Answer.where(question:@question)
+    @answers=Answer.where(question:@question).order(vote_count: :desc)
     @my_answer=Answer.new
+
   end
 
   # GET /questions/new
@@ -47,6 +48,20 @@ class QuestionsController < ApplicationController
       end
     end
 
+
+  def cast_vote
+    @vote=Vote.new(answer_id:params[:answer_id],vote_type:params[:vote_type],user_id:current_user.id)
+    begin
+      if @vote.save
+        logger.info "Vote was cast"
+      else
+      end
+    rescue
+      logger.error "Tried to vote with the same entries again"  
+    end
+    @answer=Answer.find_by_id(params[:answer_id])
+  end
+
   # PATCH/PUT /questions/1
   def update
     if @question.update(question_params)
@@ -78,5 +93,8 @@ class QuestionsController < ApplicationController
 
     def answer_params
       params.require(:answer).permit(:name,:question_id,:votes)
+    end
+    def vote_params
+      params.require(:cast_vote).permit(:vote_type,:answer_id)
     end
 end

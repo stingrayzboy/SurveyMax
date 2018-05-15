@@ -45,7 +45,16 @@
     		<div class="card-footer">
     			<%=image_tag answer.user.profile_pic,width:60,class:"image-comment" %>
           <small>Answered by&nbsp;<%=answer.user.name%>&nbsp;<%= time_ago_in_words(answer.created_at)+" ago"%></small>
-    		</div>
+          <%#byebug%>
+            <%@badge_color=if answer.vote_count>0 then "badge-success" else "badge-danger" end%>
+            <h2><span class="badge likes-count-<%=answer.id%> <%=@badge_color%>"><%=answer.vote_count%></span></h2>
+            
+            <%=link_to "Vote Up",voter_path(answer_id:answer.id,vote_type:1),class:"btn btn-success",method: :post,remote: :true%>
+          
+            <%=link_to "Vote Down",voter_path(answer_id:answer.id,vote_type:0),class:"btn btn-danger",method: :post,remote: :true%>
+    		    
+
+        </div>
   	</div>	
   <%end%>
 
