@@ -3,18 +3,7 @@
   
 
 <!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Enter Your New Question</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
+  <%=render "/modal/modal_head",locals:{"heading"=>"Ask a new Question","target"=>"myModal"}%>
           <%=form_for question,url:'/questions' do |f|%>
             <div class="form-group">
               
@@ -32,17 +21,4 @@
             <%end%>
             <%=f.submit "Ask",class:"btn btn-primary btn-block"%>
           <%end%>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-  
-</div>
-
-
+  <%=render "/modal/modal_tail"%>

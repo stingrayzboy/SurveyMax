@@ -4,36 +4,15 @@
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
       Answer this Question
   </button>
-  <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-        
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title"><%=@question.name.html_safe%></h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          
-          <!-- Modal body -->
-          <div class="modal-body">
-            	<%=form_for @my_answer,url:answers_create_path(@question) do |f|%>
-  				<input type="hidden" name="answer[question_id]" value="<%=@question.id%>">
+    <%=render "modal/modal_head",locals:{"heading"=>@question.name.html_safe,"target"=>"myModal"}%> 
+        <%=form_for @my_answer,url:answers_create_path(@question) do |f|%>
+  				  <input type="hidden" name="answer[question_id]" value="<%=@question.id%>">
   			    <%=f.cktext_area :name,class:"form-control"%>
-  			    
   			    <%=f.submit "Answer",class:"btn btn-success btn-block"%>
   			<%end%>
-          </div>
-          
-          <!-- Modal footer -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-          
-        </div>
-      </div>
-    </div>
+    <%=render "/modal/modal_tail"%>
   <%end%>
+  
   <hr>
   Answers
   <div style="overflow:scroll; height:500px;">
@@ -47,13 +26,11 @@
           <small>Answered by&nbsp;<%=answer.user.name%>&nbsp;<%= time_ago_in_words(answer.created_at)+" ago"%></small>
           <%#byebug%>
             <%@badge_color=if answer.vote_count>0 then "badge-success" else "badge-danger" end%>
-            <h2><span class="badge likes-count-<%=answer.id%> <%=@badge_color%>"><%=answer.vote_count%></span></h2>
+            <span class="badge likes-count-<%=answer.id%> <%=@badge_color%>" style="height: 100%;"><%=answer.vote_count%></span>
             
             <%=link_to "Vote Up",voter_path(answer_id:answer.id,vote_type:1),class:"btn btn-success",method: :post,remote: :true%>
           
             <%=link_to "Vote Down",voter_path(answer_id:answer.id,vote_type:0),class:"btn btn-danger",method: :post,remote: :true%>
-    		    
-
         </div>
   	</div>	
   <%end%>

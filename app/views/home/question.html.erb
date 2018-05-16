@@ -6,11 +6,10 @@
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myQuestions">
 	    My Questions
 	</button>
-	<% if logged_in?(:admin)%>
-		<%= render "question/admin"%>
-	<%else%>
-		<%= render "question/user"%>
-	<%end%>
+	
+	<h1>
+		<%=render 'question/question_form',question:@new_question%>	
+	</h1>
 	
 
 	<%= paginate @questions %>
@@ -36,18 +35,7 @@
 	</div> 
 	<%= paginate @questions %>
 	<!-- The Modal -->
-	<div class="modal fade" id="myQuestions">
-	    <div class="modal-dialog modal-lg">
-	      <div class="modal-content">
-	      
-	        <!-- Modal Header -->
-	        <div class="modal-header">
-	          <h4 class="modal-title">My Questions</h4>
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        </div>
-	        
-	        <!-- Modal body -->
-	        <div class="modal-body">
+	<%=render "/modal/modal_head",locals:{"heading"=>"My Questions","target"=>"myQuestions"}%>
 	          <%@myquestions.each do |question|%>
 	          	<div class="card text-center">
 		  
@@ -63,16 +51,5 @@
 				  </div>
 				</div>
 			    <%end%>
-	        	</div>
-	        
-	        <!-- Modal footer -->
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        </div>
-	        
-	      </div>
-	    </div>
-	  </div>
-	</div>
+	<%=render "/modal/modal_tail"%>        	
 </div>
-
