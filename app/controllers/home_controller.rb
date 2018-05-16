@@ -2,8 +2,8 @@ class HomeController < ApplicationController
 before_action :authenticate_user!
   def index
   	if logged_in?(:admin)
-      @admin_users=User.where(roles:"admin")
-      @normal_users=User.where(roles:"user")
+      @admin_users=User.where(roles:"admin").order(name: :asc)
+      @normal_users=User.where(roles:"user").order(name: :asc)
   		@question=Question.count
   		@answer=Answer.count
   		@user=User.count
@@ -24,12 +24,11 @@ before_action :authenticate_user!
   def question
     
   	@new_question=Question.new
-    @myquestions=Question.where(user:current_user)
+    @myquestions=Question.where(user:current_user).order(updated_at: :desc)
   	if logged_in?(:admin)
-      @questions=Question.page(params[:page]).per(6)
+      @questions=Question.page(params[:page]).per(6).order(updated_at: :desc)
   	else
-      @questions=Question.where(status:1).page(params[:page]).per(6)
-     
+      @questions=Question.where(status:1).page(params[:page]).per(6).order(updated_at: :desc) 
   	end
   end
   def admin
