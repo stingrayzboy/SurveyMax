@@ -36,3 +36,10 @@ body > .container {
 code {
   font-size: 80%;
 }
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 530px;
+    overflow-y: auto;
+}

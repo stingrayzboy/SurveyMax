@@ -26,9 +26,9 @@ before_action :authenticate_user!
   	@new_question=Question.new
     @myquestions=Question.where(user:current_user).order(updated_at: :desc)
   	if logged_in?(:admin)
-      @questions=Question.page(params[:page]).per(6).order(updated_at: :desc)
+      @questions=Question.page(params[:page]).per(4).order(updated_at: :desc)
   	else
-      @questions=Question.where(status:1).page(params[:page]).per(6).order(updated_at: :desc) 
+      @questions=Question.where(status:1).page(params[:page]).per(4).order(updated_at: :desc) 
   	end
   end
   def admin
