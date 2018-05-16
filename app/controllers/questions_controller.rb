@@ -57,7 +57,16 @@ class QuestionsController < ApplicationController
       else
       end
     rescue
-      logger.error "Tried to vote with the same entries again"  
+      Vote.where(answer_id:@vote.answer_id,user_id:@vote.user_id).first.destroy
+      @answer_vote=Answer.find_by_id(@vote.answer_id)
+      
+      if @vote.vote_type==1
+        @answer_vote.vote_count-=1
+      else
+        @answer_vote.vote_count+=1
+      end
+      @answer_vote.save
+      logger.error "Tried to vote with the same entries again so vote was destroyed"  
     end
     @answer=Answer.find_by_id(params[:answer_id])
   end

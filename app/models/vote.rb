@@ -30,9 +30,22 @@ class Vote < ApplicationRecord
 		opposite_vote=opposite.join
 
 		opposite_vote_from_db=Vote.find_by_bazuka(opposite_vote)
+		
 		if opposite_vote_from_db
+			answer=Answer.find_by_id(opposite_vote_from_db.answer_id)
+
+			if answer
+				if opposite_vote_from_db.vote_type==1
+					answer.vote_count-=1
+				else
+					answer.vote_count+=1
+				end
+				answer.save
+			end
+		
 			opposite_vote_from_db.destroy
 		end
 	end
+
 
 end
