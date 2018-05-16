@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
   get 'home/question'
   post 'bazzinga/:id',to:"home#admin",as:"user_admin"
