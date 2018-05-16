@@ -24,8 +24,8 @@
     		<div class="card-footer">
     			<%=image_tag answer.user.profile_pic,width:60,class:"image-comment" %>
           <small>Answered by&nbsp;<%=answer.user.name%>&nbsp;<%= time_ago_in_words(answer.created_at)+" ago"%></small>
-          <%#byebug%>
-            <%@badge_color=if answer.vote_count>0 then "badge-success" else "badge-danger" end%>
+          
+            <%@badge_color=if answer.vote_count>0 then "badge-success" elsif answer.vote_count==0 then "" else "badge-danger" end%>
             <span class="badge likes-count-<%=answer.id%> <%=@badge_color%>" style="height: 100%;"><%=answer.vote_count%></span>
             
             <%=link_to "Vote Up",voter_path(answer_id:answer.id,vote_type:1),class:"btn btn-success",method: :post,remote: :true%>

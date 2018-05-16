@@ -1,24 +1,19 @@
-
-  <!-- Button to Open the Modal -->
-  
-
-<!-- The Modal -->
-  <%=render "/modal/modal_head",locals:{"heading"=>"Ask a new Question","target"=>"myModal"}%>
-          <%=form_for question,url:'/questions' do |f|%>
-            <div class="form-group">
-              
-              <%=f.cktext_area :name,class:"form-control"%>
-            </div>
-            <div class="form-group">
-            <%if logged_in?(:admin)%>
-            <small>On whose Behalf would you like to post this question?</small>
-                <%= f.collection_select(:user_id, User.all,:id,:name,{
-                  include_blank:false,
-                },class:"form-control") %>
-            </div>
-            <%else%>
-              <input type="hidden" name="question[user_id]" value="<%=current_user.id%>">
-            <%end%>
-            <%=f.submit "Ask",class:"btn btn-primary btn-block"%>
+<%=render "/modal/modal_head",locals:{"heading"=>"Ask a new Question","target"=>"myModal"}%>
+        <%=form_for question,url:'/questions' do |f|%>
+          <div class="form-group">
+            
+            <%=f.cktext_area :name,class:"form-control"%>
+          </div>
+          <div class="form-group">
+          <%if logged_in?(:admin)%>
+          <small>On whose Behalf would you like to post this question?</small>
+              <%= f.collection_select(:user_id, User.all,:id,:name,{
+                include_blank:false,
+              },class:"form-control") %>
+          </div>
+          <%else%>
+            <input type="hidden" name="question[user_id]" value="<%=current_user.id%>">
           <%end%>
-  <%=render "/modal/modal_tail"%>
+          <%=f.submit "Ask",class:"btn btn-primary btn-block"%>
+        <%end%>
+<%=render "/modal/modal_tail"%>

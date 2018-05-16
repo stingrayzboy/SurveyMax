@@ -1,10 +1,12 @@
 $('.likes-count-<%=@answer.id%>').html("<%=@answer.vote_count%>");
 
 <%if @answer.vote_count>0 
-	@blah="badge-success" 
+	badge_color="badge-success" 
+elsif @answer.vote_count==0
+	badge_color=""
 else 
-	@blah="badge-danger" 
+	badge_color="badge-danger" 
 end%>
 
 $('.likes-count-<%=@answer.id%>').removeClass('badge-danger badge-success');
-$('.likes-count-<%=@answer.id%>').addClass('<%=@blah%>');
+$('.likes-count-<%=@answer.id%>').addClass('<%=badge_color%>');

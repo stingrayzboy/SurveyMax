@@ -9,30 +9,30 @@
 <%if logged_in?(:admin)%>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Manage Admins
- </button>
+</button>
 
-  <%=render "/modal/modal_head",locals:{"heading"=>"Users","target"=>"myModal"}%>
-	        <div class="row">
-	        	<div class="col-md-6">	
-	        		<h3>Users</h3>
-	        		<div style="overflow:scroll; height:400px;">
-					<%@normal_users.each do |user|%>
-						<%=image_tag user.profile_pic,width:60,class:"image-comment" %>
-						<%=link_to user.name ,user_admin_path(user.id),method: :post%>
-						<hr>
-					<%end%>
-					</div>
-		        </div>
-	          <div class="col-md-6">
-	          		<h3>Admins</h3>
-	          		<div style="overflow:scroll; height:400px;">
-	          		<%@admin_users.each do |user|%>
-	          			<%=image_tag user.profile_pic,width:60,class:"image-comment" %>
-		          		<%=link_to user.name ,admin_user_path(user.id),method: :post%>
-		          		<hr>
-		          	<%end%>
-		          </div>
-	          </div>
+<%=render "/modal/modal_head",locals:{"heading"=>"Users","target"=>"myModal"}%>
+        <div class="row">
+        	<div class="col-md-6">	
+        		<h3>Users</h3>
+        		<div style="overflow:scroll; height:400px;">
+				<%@normal_users.each do |user|%>
+					<%=image_tag user.profile_pic,width:60,class:"image-comment" %>
+					<%=link_to user.name ,user_admin_path(user.id),method: :post%>
+					<hr>
+				<%end%>
+				</div>
 	        </div>
-    <%=render "/modal/modal_tail"%>    
+          <div class="col-md-6">
+          		<h3>Admins</h3>
+          		<div style="overflow:scroll; height:400px;">
+          		<%@admin_users.each do |user|%>
+          			<%=image_tag user.profile_pic,width:60,class:"image-comment" %>
+	          		<%=link_to user.name ,admin_user_path(user.id),method: :post%>
+	          		<hr>
+	          	<%end%>
+	          </div>
+          </div>
+        </div>
+<%=render "/modal/modal_tail"%>    
  <%end%>

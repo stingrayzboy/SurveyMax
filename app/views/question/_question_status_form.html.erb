@@ -1,8 +1,7 @@
 <%=form_for quest,url:question_path(quest),method: :patch do |f|%>
 	<div class="form-group">
 		<%=f.select :status,[["Private",0],["Active",1],["Expired",2]],class:"form-control"%>
-		<%=f.submit "Update",class:"btn btn-primary"%>
-		
+		<%=f.submit "Update",class:"btn btn-primary"%>	
 	</div>
 <%end%>
 

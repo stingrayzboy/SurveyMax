@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
 before_action :authenticate_user!
-before_action :set_question
-before_action :set_answer
   def index
   	if logged_in?(:admin)
       @admin_users=User.where(roles:"admin")
@@ -49,15 +47,6 @@ before_action :set_answer
     if @user.save
     end
     redirect_to action:"index"
-  end
-  private
-
-  def set_question
-  	@questions=Question.all
-  end
-
-  def set_answer
-  	@answer=Answer.all
   end
   
 end
