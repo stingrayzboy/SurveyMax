@@ -1,0 +1,2 @@
+class ServiceUser < User
+end
