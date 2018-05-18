@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514180003) do
+ActiveRecord::Schema.define(version: 20180518185326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20180514180003) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
+  create_table "service_hits", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "hits"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_service_hits_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "encrypted_password", default: "", null: false
@@ -52,6 +60,7 @@ ActiveRecord::Schema.define(version: 20180514180003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "roles"
+    t.string "type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -69,6 +78,7 @@ ActiveRecord::Schema.define(version: 20180514180003) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "service_hits", "users"
   add_foreign_key "votes", "answers"
   add_foreign_key "votes", "users"
 end
