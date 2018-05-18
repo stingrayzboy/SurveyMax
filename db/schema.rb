@@ -37,14 +37,6 @@ ActiveRecord::Schema.define(version: 20180518185326) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
-  create_table "service_hits", force: :cascade do |t|
-    t.bigint "user_id"
-    t.integer "hits"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_service_hits_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "encrypted_password", default: "", null: false
