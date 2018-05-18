@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ServiceUser: one
+  hits: 1
+  date: 2018-05-19
+
+two:
+  ServiceUser: two
+  hits: 1
+  date: 2018-05-19
