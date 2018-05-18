@@ -1,3 +1,9 @@
+ServiceUser.create(
+	name:"Service Iser",
+	email:"service@gmail.com",
+	password:"boomla1!",
+	password_confirmation:"boomla1!"
+	)
 faraz=User.create(
 	name:"Faraz Noor",
 	email:"faraznoor75@gmail.com",
