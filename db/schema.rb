@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 20180518185326) do
   end
 
   add_foreign_key "answers", "questions"
-  add_foreign_key "service_hits", "users"
   add_foreign_key "votes", "answers"
   add_foreign_key "votes", "users"
 end
