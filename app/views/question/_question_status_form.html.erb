@@ -1,5 +1,11 @@
 <%=form_for quest,url:question_path(quest),method: :patch do |f|%>
 	<div class="form-group">
+		<%if logged_in?(:admin)%>
+          <small>Would you like to change the user?</small>
+              <%= f.collection_select(:user_id, User.where(type:nil),:id,:name,{
+                include_blank:false,
+              },class:"form-control") %>
+        <%end%>
 		<%=f.select :status,[["Private",0],["Active",1],["Expired",2]],class:"form-control"%>
 		<%=f.submit "Update",class:"btn btn-primary"%>	
 	</div>

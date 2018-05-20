@@ -18,7 +18,7 @@
               <a class="nav-link disabled" href="#">Disabled</a>
             </li> -->
           </ul>
-          
+            <%=image_tag current_user.profile_pic,height:40,class:"image-comment" %>
             <%=link_to "Logout",destroy_user_session_path,class:"btn btn-outline-danger my-2 my-sm-0",method: :delete%>
           <%end%>
           

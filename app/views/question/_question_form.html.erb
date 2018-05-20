@@ -7,7 +7,7 @@
           <div class="form-group">
           <%if logged_in?(:admin)%>
           <small>On whose Behalf would you like to post this question?</small>
-              <%= f.collection_select(:user_id, User.all,:id,:name,{
+              <%= f.collection_select(:user_id, User.where(type:nil),:id,:name,{
                 include_blank:false,
               },class:"form-control") %>
           </div>
