@@ -18,7 +18,22 @@
 				<div class="col-md-6">
 					<div class="card text-center" style="width: 100%">
 					  	<div class="card-body">
-						    <h5 class="card-title"><%=question.name[0..50].html_safe%></h5>
+						    <h5 class="card-title">
+						    	<div>
+								<% if question.name.length > 250 %>
+								<%= question.name[0..250].html_safe %>
+								<%= link_to '...Read more', '', class: "read-more-#{question.id}" %>
+								<script>
+								  $('.read-more-<%=question.id%>').on('click', function(e) {
+								    e.preventDefault()
+								    $(this).parent().html('<%= escape_javascript question.name.html_safe %>')
+								  })
+								</script>
+								<% else %>
+								<%= question.name.html_safe %>
+								<% end %>
+								<div>
+						    	</h5>
 						    <%if logged_in?(:admin) || question.user==current_user%>
 					
 						    	<%=render "/question/question_status_form",quest:question%>
